@@ -39,8 +39,8 @@ Memorastle explores a spatial approach to learning and remembering by allowing u
 
 ## 🤝 Team
 
-- **Creator:** Mukti_786
-- **Collaborator:** Lakshya_787
+- **Creator:** mukti786
+- **Collaborator:** Lakshya787
 
 ## 📄 License
 
