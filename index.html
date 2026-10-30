@@ -4,38 +4,97 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101725" />
-    <meta name="description" content="Memorastle — a place for every memory." />
+    <meta name="description" content="Explore a quiet, interactive memory palace. Give every idea a place of its own." />
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-    <title>Memorastle — A place for every memory</title>
+    <title>Memorastle — Every memory deserves a place</title>
   </head>
   <body>
-    <div class="app-shell">
-      <main class="experience" aria-label="Memorastle 3D experience">
-        <div id="scene-root" class="scene-root" aria-label="An interactive view inside a grand marble memory palace"></div>
-        <div class="scene-shade" aria-hidden="true"></div>
-        <header class="topbar">
-          <a class="brand" href="/" aria-label="Memorastle home">
-            <img src="/assets/favicon.png" alt="" width="38" height="38" />
-            <span>Memorastle</span>
-          </a>
-          <div class="topbar-note"><span class="status-dot"></span> INTERACTIVE MEMORY PALACE</div>
-          <div class="chapter-mark"><span>ATRIUM</span><span>01</span></div>
-        </header>
-        <section class="intro-panel" aria-labelledby="welcome-title">
-          <p class="eyebrow"><span class="eyebrow-rule"></span> A PLACE FOR EVERY MEMORY</p>
-          <h1 id="welcome-title">The Grand<br /><em>Archive</em></h1>
-          <p class="welcome-copy">Wander through a world shaped for remembering. Give every idea a place of its own.</p>
-        </section>
-        <footer class="scene-footer"><span class="scene-caption">A PALACE BUILT IN THE MIND</span><span class="footer-rule"></span><span class="look-hint"><span aria-hidden="true">↔</span> DRAG TO LOOK AROUND</span></footer>
-        <div id="loading-state" class="loading-state" role="status" aria-live="polite">
-          <span class="loading-mark" aria-hidden="true"></span><span>Opening the archive</span>
+    <main class="experience" aria-label="Memorastle interactive memory palace">
+      <div id="scene-root" class="scene-root" aria-label="Interactive 3D palace. Drag to orbit, scroll or pinch to zoom, and select glowing objects to add memories. Focus this scene and press 1, 2, or 3 to select an object."></div>
+      <div class="scene-shade" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Memorastle home">
+          <img src="/assets/favicon.png" alt="" width="36" height="36" />
+          <span>Memorastle</span>
+        </a>
+        <div class="palace-label"><span class="status-dot"></span> THE GRAND ARCHIVE</div>
+        <div class="hud-actions">
+          <div class="memory-count" aria-live="polite"><span class="count-glyph" aria-hidden="true">✧</span><span id="memory-count">0</span><span class="count-label">memories</span></div>
+          <button id="reset-view" class="icon-button reset-button" type="button" title="Return to entrance" aria-label="Return to default view"><span aria-hidden="true">↺</span><span class="button-word">Reset view</span></button>
+          <button id="open-help" class="icon-button help-button" type="button" title="How to explore" aria-label="How to explore the palace">?</button>
         </div>
-        <div id="app-error" class="app-error" role="alert" hidden></div>
-      </main>
-    </div>
+      </header>
+
+      <section id="intro-screen" class="intro-screen" aria-labelledby="intro-title">
+        <div class="intro-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="intro-content">
+          <p class="intro-kicker"><span class="eyebrow-rule"></span> A LIVING MEMORY PALACE</p>
+          <h1 id="intro-title">Every memory<br />deserves <em>a place.</em></h1>
+          <p class="intro-copy">Step into your own memory palace. Explore its spaces, discover objects, and give your thoughts a place to live.</p>
+          <button id="enter-palace" class="primary-button" type="button"><span>Enter the palace</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+          <p class="intro-footnote"><span class="intro-star" aria-hidden="true">✦</span> YOUR MEMORIES STAY IN THIS BROWSER</p>
+        </div>
+        <div class="intro-index"><span>01</span><span class="index-line"></span><span>THE ARCHIVE</span></div>
+      </section>
+
+      <section class="scene-title" aria-label="Current location">
+        <p>THE MEMORY PALACE <span>·</span> FIRST CHAMBER</p>
+        <h2>The Grand Archive</h2>
+      </section>
+      <footer class="navigation-hint"><span class="hint-orbit" aria-hidden="true">↔</span><span>DRAG TO ORBIT <i></i> SCROLL TO ZOOM <i></i> SELECT AN OBJECT</span></footer>
+
+      <aside id="help-panel" class="help-panel" aria-labelledby="help-title" aria-hidden="true" hidden>
+        <button class="help-close icon-button" type="button" data-close-help aria-label="Close exploration guide">×</button>
+        <p class="panel-kicker">A MOMENT TO GET YOUR BEARINGS</p>
+        <h2 id="help-title">Explore the archive</h2>
+        <ul class="instruction-list">
+          <li><span class="instruction-icon">↔</span><span><strong>Look around</strong><small>Drag with a mouse or one finger.</small></span></li>
+          <li><span class="instruction-icon">⌕</span><span><strong>Move closer</strong><small>Scroll to zoom, or pinch on a touch screen.</small></span></li>
+          <li><span class="instruction-icon">✦</span><span><strong>Meet an object</strong><small>Select a glowing object, or focus the scene and press 1, 2, or 3.</small></span></li>
+          <li><span class="instruction-icon">↺</span><span><strong>Find your way back</strong><small>Choose Reset view or press R.</small></span></li>
+        </ul>
+        <button class="text-button" type="button" data-close-help>Begin exploring <span aria-hidden="true">→</span></button>
+      </aside>
+
+      <aside id="memory-panel" class="memory-panel" aria-labelledby="memory-object-name" aria-hidden="true" hidden>
+        <div class="panel-topline"><span class="panel-kicker">AN OBJECT IN YOUR PALACE</span><button id="close-memory-panel" class="icon-button panel-close" type="button" aria-label="Close memory panel">×</button></div>
+        <div class="object-heading"><span id="memory-object-glyph" class="object-glyph" aria-hidden="true">✦</span><div><p class="object-type">MEMORY OBJECT</p><h2 id="memory-object-name">Object</h2></div></div>
+        <div class="panel-divider"><span></span><span>YOUR MEMORY</span><span></span></div>
+        <div id="memory-empty" class="empty-memory" hidden>
+          <span class="empty-glyph" aria-hidden="true">✧</span>
+          <h3>A place waiting to be filled</h3>
+          <p>Give this object a thought, a fact, or a moment you want to find again.</p>
+        </div>
+        <article id="memory-saved" class="saved-memory" hidden>
+          <p class="saved-label">KEPT HERE</p>
+          <h3 id="saved-memory-title"></h3>
+          <p id="saved-memory-description" class="saved-description"></p>
+        </article>
+        <form id="memory-form" class="memory-form" hidden>
+          <label for="memory-title">Memory title<input id="memory-title" name="title" type="text" maxlength="80" placeholder="A name to find it by" required /></label>
+          <div class="field-meta"><span></span><span id="title-count">0/80</span></div>
+          <label for="memory-description">A few details<textarea id="memory-description" name="description" rows="5" maxlength="1600" placeholder="Write the idea, story, or detail you want to remember…" required></textarea></label>
+          <div class="field-meta"><span>Your writing stays on this device.</span><span id="description-count">0/1600</span></div>
+          <div class="form-actions"><button class="primary-button form-save" type="submit">Save memory <span aria-hidden="true">↗</span></button><button id="cancel-edit" class="quiet-button" type="button">Cancel</button></div>
+        </form>
+        <p id="panel-message" class="panel-message" role="status" aria-live="polite"></p>
+        <div class="memory-actions">
+          <button id="add-memory" class="primary-button" type="button">Place a memory <span aria-hidden="true">+</span></button>
+          <button id="edit-memory" class="secondary-button" type="button" hidden>Edit memory</button>
+          <button id="delete-memory" class="quiet-button delete-button" type="button" hidden>Remove</button>
+          <button id="confirm-delete" class="quiet-button delete-button" type="button" hidden>Remove this memory</button>
+          <button id="keep-memory" class="quiet-button" type="button" hidden>Keep it</button>
+        </div>
+      </aside>
+
+      <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+      <div id="loading-state" class="loading-state" role="status" aria-live="polite"><span class="loading-mark" aria-hidden="true"></span><span>Opening the archive</span></div>
+      <div id="app-error" class="app-error" role="alert" hidden></div>
+    </main>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

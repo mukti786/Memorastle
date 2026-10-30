@@ -4,7 +4,8 @@ export function createMemoryRelic() {
   const group = new THREE.Group();
   const coreMaterial = new THREE.MeshPhysicalMaterial({ color: '#b7e8f3', emissive: '#2c9fc2', emissiveIntensity: 1.25, roughness: 0.2, metalness: 0.18, clearcoat: 1, clearcoatRoughness: 0.14 });
   const core = new THREE.Mesh(new THREE.OctahedronGeometry(0.82, 1), coreMaterial);
-  core.castShadow = true;
+  // The crystal floats and turns, so leave it out of the static shadow map.
+  core.castShadow = false;
   group.add(core);
 
   const goldHalo = new THREE.Mesh(new THREE.TorusGeometry(1.35, 0.035, 10, 96), new THREE.MeshStandardMaterial({ color: '#e4c28a', emissive: '#8b5a30', emissiveIntensity: 0.35, metalness: 0.82, roughness: 0.26 }));

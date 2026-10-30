@@ -12,7 +12,8 @@ export function createRenderer(container) {
   // The architecture is static, so render its shadow map once instead of rebuilding it every frame.
   renderer.shadowMap.autoUpdate = false;
   renderer.shadowMap.needsUpdate = true;
-  renderer.domElement.setAttribute('aria-hidden', 'true');
+  renderer.domElement.setAttribute('aria-label', 'Interactive 3D memory palace. Use arrow keys to look around, 1 to select the crystal, 2 for the book, 3 for the lantern, and R to return to the entrance.');
+  renderer.domElement.tabIndex = 0;
   container.appendChild(renderer.domElement);
   return renderer;
 }
