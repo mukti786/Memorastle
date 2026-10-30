@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101725" />
+    <meta name="description" content="Memorastle — a place for every memory." />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <title>Memorastle — A place for every memory</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="experience" aria-label="Memorastle 3D experience">
+        <div id="scene-root" class="scene-root" aria-label="A quiet garden in the Memorastle palace"></div>
+        <div class="scene-shade" aria-hidden="true"></div>
+        <header class="topbar">
+          <a class="brand" href="/" aria-label="Memorastle home">
+            <img src="/assets/favicon.png" alt="" width="38" height="38" />
+            <span>Memorastle</span>
+          </a>
+          <div class="topbar-note"><span class="status-dot"></span> THE MEMORY GARDEN</div>
+          <button class="sound-button" type="button" aria-label="Sound is currently off" title="Sound is currently off"><span aria-hidden="true">♫</span></button>
+        </header>
+        <section class="welcome-card" aria-labelledby="welcome-title">
+          <p class="eyebrow">A PLACE FOR EVERY MEMORY</p>
+          <h1 id="welcome-title">Wander. Wonder.<br /><em>Remember.</em></h1>
+          <p class="welcome-copy">Step into a quieter corner of your mind. The palace is yours to explore.</p>
+          <button id="explore-button" class="explore-button" type="button">
+            <span>Enter the garden</span><span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <p class="hint"><span aria-hidden="true">✦</span> DRAG TO LOOK AROUND</p>
+        </section>
+        <footer class="scene-footer"><span>01 — THE ATRIUM</span><span class="footer-rule"></span><span>MEMORY PALACE · EST. IN THE MIND</span></footer>
+        <div id="app-error" class="app-error" role="alert" hidden></div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

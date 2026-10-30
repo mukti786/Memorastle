@@ -1,48 +1,59 @@
-
-# 🏰 Memorastle
+# Memorastle
 
 **Turn memories into places. Make information easier to remember.**
 
-Memorastle is an interactive 3D memory palace built with Three.js, inspired by the ancient Method of Loci. The project aims to help users organize, visualize, and recall information through a virtual environment.
+Memorastle is an interactive 3D memory palace inspired by the Method of Loci. This repository is the foundation for a spatial learning experience where people can explore rooms, place ideas in memorable locations, and practice recall.
 
-## ✨ Vision
+## Current foundation
 
-Memorastle explores a spatial approach to learning and remembering by allowing users to associate information with virtual rooms, objects, and locations.
+- Vite serves the native JavaScript application and builds it for production.
+- Three.js renders a procedural, atmospheric atrium with an animated memory relic.
+- Drag the scene to look around; use the entry button to clear the welcome panel.
+- The existing brand art and favicon remain in the root `assets/` directory and are served from `/assets/`.
 
-## 🚀 Planned Features
+## Requirements
 
-- 🌍 Interactive 3D environment using Three.js
-- 🏠 Virtual rooms and locations for organizing memories
-- 📍 Spatial mapping of notes, facts, and concepts
-- 🧠 Memory recall and review
-- 🎨 Customizable virtual spaces
-- 💾 Persistent storage for user-created memories
+- Node.js 20.19+ or 22.12+
+- npm
 
-*These features are planned and will be updated as development progresses.*
+## Run locally
 
-## 🛠️ Tech Stack
+```sh
+npm install
+npm run dev
+```
 
-- Three.js
-- JavaScript / TypeScript
-- HTML
-- CSS
+Vite prints a local URL after startup. Create a production bundle with `npm run build` and inspect it locally with `npm run preview`.
 
-## 🗺️ Roadmap
+## Project structure
 
-- [ ] Set up the project structure
-- [ ] Build the initial 3D environment
-- [ ] Implement navigation and camera controls
-- [ ] Add memory creation and placement
-- [ ] Implement memory retrieval and review
-- [ ] Add persistent storage
+```text
+assets/                 Existing brand image and favicon
+src/
+  core/                  Scene, camera, and renderer setup
+  interactions/          Pointer drag-look controls
+  objects/               Reusable 3D memory relic
+  styles/                Application styles
+  ui/                    User-facing error handling
+  world/                 Procedural garden environment
+  main.js                Application entry and animation loop
+index.html               Page shell and accessible interface
+```
+
+## Roadmap
+
+- [ ] Add room-to-room navigation and palace spaces
+- [ ] Create, edit, and place memory notes in the environment
+- [ ] Implement recall and review flows
+- [ ] Add persistence and customizable environments
 - [ ] Deploy a live demo
 
-## 🤝 Team
+## Team
 
 - **Creator:** mukti786
 - **Collaborator:** Lakshya787
 
-## 📄 License
+## License
 
 To be decided.
 
