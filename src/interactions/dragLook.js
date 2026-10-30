@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export function createDragLook(container, camera) {
-  const pointer = { down: false, x: 0, y: 0, yaw: 0.67, pitch: 0 };
+  const pointer = { down: false, x: 0, y: 0, yaw: 0.31, pitch: 0 };
   const onPointerDown = (event) => {
     pointer.down = true;
     pointer.x = event.clientX;
@@ -24,9 +24,10 @@ export function createDragLook(container, camera) {
 
   return {
     update(elapsed) {
-      const angle = elapsed * 0.025 + pointer.yaw;
-      camera.position.set(Math.sin(angle) * 13, 5.1 - pointer.pitch * 5, Math.cos(angle) * 13);
-      camera.lookAt(0, 1.65, 0);
+      const angle = pointer.yaw + Math.sin(elapsed * 0.12) * 0.018;
+      const radius = 25;
+      camera.position.set(Math.sin(angle) * radius, 8.2 - pointer.pitch * 8, Math.cos(angle) * radius);
+      camera.lookAt(0, 4.15 + pointer.pitch * 2, -5.2);
     },
     dispose() {
       container.removeEventListener('pointerdown', onPointerDown);

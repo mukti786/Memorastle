@@ -2,13 +2,14 @@
 
 **Turn memories into places. Make information easier to remember.**
 
-Memorastle is an interactive 3D memory palace inspired by the Method of Loci. This repository is the foundation for a spatial learning experience where people can explore rooms, place ideas in memorable locations, and practice recall.
+Memorastle is an interactive 3D memory palace inspired by the Method of Loci. Explore the first environment, the Grand Archive: a vaulted marble hall centered around a floating memory relic.
 
 ## Current foundation
 
 - Vite serves the native JavaScript application and builds it for production.
-- Three.js renders a procedural, atmospheric atrium with an animated memory relic.
-- Drag the scene to look around; use the entry button to clear the welcome panel.
+- Three.js renders a procedural, atmospheric hall with marble flooring, pillars, ribbed arches, cyan window light, lanterns, and a floating relic.
+- Drag the scene to look around; the hall has a restrained ambient camera drift and animated lantern light.
+- Reused scene, camera, and renderer modules initialize the environment; world, lighting, atmosphere, objects, and pointer interaction remain separate.
 - The existing brand art and favicon remain in the root `assets/` directory and are served from `/assets/`.
 
 ## Requirements
@@ -35,7 +36,7 @@ src/
   objects/               Reusable 3D memory relic
   styles/                Application styles
   ui/                    User-facing error handling
-  world/                 Procedural garden environment
+  world/                 Hall architecture, lighting, and atmosphere
   main.js                Application entry and animation loop
 index.html               Page shell and accessible interface
 ```

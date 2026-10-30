@@ -8,7 +8,7 @@ import { showAppError } from './ui/errors.js';
 import './styles/main.css';
 
 const root = document.querySelector('#scene-root');
-const exploreButton = document.querySelector('#explore-button');
+const loadingState = document.querySelector('#loading-state');
 
 function startExperience() {
   if (!root) throw new Error('The 3D scene container was not found.');
@@ -31,18 +31,13 @@ function startExperience() {
   };
   window.addEventListener('resize', resize);
 
-  exploreButton?.addEventListener('click', () => {
-    document.querySelector('.welcome-card')?.classList.add('welcome-card--hidden');
-  });
-
   const animate = () => {
     frameId = window.requestAnimationFrame(animate);
     const elapsed = clock.getElapsedTime();
-    garden.memory.position.y = 1.56 + Math.sin(elapsed * 1.1) * 0.13;
-    garden.memory.rotation.y = elapsed * 0.3;
-    garden.glow.intensity = 21 + Math.sin(elapsed * 1.8) * 3;
+    garden.update(elapsed);
     dragLook.update(elapsed);
     renderer.render(scene, camera);
+    loadingState?.classList.add('loading-state--ready');
   };
 
   animate();
@@ -50,6 +45,7 @@ function startExperience() {
     window.cancelAnimationFrame(frameId);
     window.removeEventListener('resize', resize);
     dragLook.dispose();
+    garden.dispose();
     renderer.dispose();
   };
 }
